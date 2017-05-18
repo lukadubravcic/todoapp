@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/css/registerform.css"/>
+		<title>Todo-checklist</title>
+	</head>
+	<body>
+	<div align="center">
+		<div class="container" style="width:400px;">
+			<form action="/" method="POST">
+				<label><b>Email</b></label>
+				<input type="text" name="email" placeholder="Enter Email" required>	
+				<label><b>Password</b></label>
+				<input type="password" name="password" placeholder="Enter Password" required>
+				<button type="submit" class="cancelbtn">Submit</button>
+			</form>
+			
+			<form action='/register' method="GET">
+				<button type="submit" class="signupbtn">Register</button>
+			</form>
+		</div>
+	</div>
+	</body>
+</html>
