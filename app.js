@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var config = require('./config/dbConnection');
 
+var loginController = require('./controllers/loginController');
+var registerController = require('./controllers/registerController')
+
 var port = process.env.PORT || 1337;
 
 var app = express();
@@ -19,37 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(config.getDbConnectionString());
 
+loginController(app);
+registerController(app);
 
-app.get('/', function(req, res) {
-	
-	res.render('login');
-
-});
-
-app.post('/', function(req, res) {
-
-	// on failed login render login form again, else dashboard
-
-	Users.findOne({ email: req.body.email }, function(err, user) {
-
-		if (err) throw err;
-		
-		if (user) {
-
-			if (user.password === req.body.password) {
-
-				console.log('Login correct');
-			}
-		}
-	});
-
-});
-
-app.get('/register', function(req, res) {
-
-	res.render('register');
-
-});
 
 app.listen(port);
 
